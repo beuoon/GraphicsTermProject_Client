@@ -1,3 +1,5 @@
+#pragma once
+
 #define _WINSOCK_DEPRECATED_NO_WARNINGS
 
 #include <WinSock2.h>
@@ -10,6 +12,8 @@ using namespace std;
 
 constexpr auto BUFF_SIZE = 1024;
 
+typedef void (*OnRecvFunc)(const char *, const int &);
+
 class Client {
 public:
 	Client(const char *serverAddr, int port);
@@ -20,7 +24,7 @@ public:
 	void send(const char *buff, int len) const;
 	void recvLoop();
 
-	inline void setOnRecv(void (*onRecv)(const char *, const int &)) {
+	inline void setOnRecv(OnRecvFunc onRecv) {
 		this->onRecv = onRecv;
 	}
 
@@ -38,5 +42,5 @@ private:
 	thread *recvThread = nullptr;
 	list<thread *> eventThreadList;
 
-	void (*onRecv)(const char *, const int &) = nullptr;
+	OnRecvFunc onRecv = nullptr;
 };
