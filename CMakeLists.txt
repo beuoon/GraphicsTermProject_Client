@@ -13,8 +13,8 @@ include_directories(Includes)
 include_directories(Libraries/freeglut/include)
 
 # 소스 설정
-set(SOURCE ${SRC_DIR}/Main.cpp ${SRC_DIR}/Client.cpp)
-set(HEADERS ${INC_DIR}/Client.hpp)
+set(SOURCE ${SRC_DIR}/Main.cpp ${SRC_DIR}/Client.cpp ${SRC_DIR}/Game.cpp ${SRC_DIR}/GCamera.cpp ${SRC_DIR}/GVector.cpp ${SRC_DIR}/GVector3d.cpp ${SRC_DIR}/GVector4d.cpp)
+set(HEADERS ${INC_DIR}/Client.hpp ${INC_DIR}/Game.hpp ${INC_DIR}/GObject.hpp ${INC_DIR}/GCamera.hpp ${INC_DIR}/GVector.hpp ${INC_DIR}/GVector3d.hpp ${INC_DIR}/GVector4d.hpp )
 
 # 프로젝트 생성
 add_executable(${TARGET} ${SOURCE} ${HEADERS})
